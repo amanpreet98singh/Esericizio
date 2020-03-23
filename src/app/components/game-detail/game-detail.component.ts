@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { GameItem } from 'src/app/model/game-item';
+import { GameListService } from 'src/app/services/game-list-service.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-detail.component.scss']
 })
 export class GameDetailComponent implements OnInit {
-
-  constructor() { }
+  @Input()
+  gameid:number;
+  game:GameItem;
+  constructor(private gameListService: GameListService) { 
+  }
 
   ngOnInit(): void {
+    this.game=this.gameListService.getGameItem(this.gameid);
   }
 
 }
