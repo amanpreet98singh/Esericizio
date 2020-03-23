@@ -2,6 +2,6 @@
 <ul>
     <li *ngFor="let menuItem of menuList" [class.active]="menuItem.sele">
 
-        <button (click)="selectedComponenet(menuItem.id)">{{menuItem.desc}}</button>ciao
+        <button [routerLink]="menuItem.desc">{{menuItem.desc}}</button>ciao
     </li>
 </ul>

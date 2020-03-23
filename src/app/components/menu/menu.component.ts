@@ -24,11 +24,11 @@ export class MenuComponent implements OnInit {
   }
   menuList:MenuItem[]=[  
   { id:1, 
-    desc:"Home",
+    desc:"home",
     sele: true},     
-     { id:2, desc:"Lista giochi", 
+     { id:2, desc:"games-list", 
      sele: false},     
-     { id:3, desc:"Modifica giochi", 
+     { id:3, desc:"edit", 
      sele: false}   ]
 }
 
