@@ -3,6 +3,6 @@ export interface GameItem {
     name:string;
     desc:string;
     genere:string;
-    prezzo:string;
+    prezzo:number;
     rating:number;
 }
