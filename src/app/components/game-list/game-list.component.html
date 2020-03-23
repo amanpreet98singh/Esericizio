@@ -1,0 +1,4 @@
+<li *ngFor="let gameItem of gameList">
+    nome: {{gameItem.name}}
+    <button [routerLink]="['/GameDetail', gameItem.id]">></button>
+</li>

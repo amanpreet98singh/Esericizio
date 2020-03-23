@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MenuItem } from 'src/app/model/menu-item';
+import { MenuItem } from 'src/app/models/menu-item';
 
 @Component({
   selector: 'app-menu',
@@ -7,28 +7,26 @@ import { MenuItem } from 'src/app/model/menu-item';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  @Output()
-  selectMenuItem: EventEmitter<number> = new EventEmitter<number>();
-  
-  selectedComponenet(id: number){
-    for(let menuItem of this.menuList){
-        menuItem.sele = id === menuItem.id
-    }
-  
-  this.selectMenuItem.emit(id);
 
-  }
+  @Output()
+  selectedMenuItem: EventEmitter<number>= new EventEmitter();
+
+  menuList:MenuItem[]=[     
+    { id:1, desc:"Home", sele: true},
+    { id:2, desc:"GameList", sele: false},
+    { id:3, desc:"GameEdit", sele: false}  
+   ]
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
-  menuList:MenuItem[]=[  
-  { id:1, 
-    desc:"home",
-    sele: true},     
-     { id:2, desc:"games-list", 
-     sele: false},     
-     { id:3, desc:"edit", 
-     sele: false}   ]
-}
 
+  change(id:number){
+    for(let MenuItem of this.menuList)
+      MenuItem.sele=id === MenuItem.id;
+    this.selectedMenuItem.emit(id);
+  }
+
+}
