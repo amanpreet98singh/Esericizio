@@ -19,7 +19,7 @@ export class LoginService {
     return this.peopleList;
   }*/
 
-  login(ut:String, psw:String):boolean{
+  control(ut:String, psw:String):boolean{
     for(let i=0;i<this.peopleList.length;i++)
       if(this.peopleList[i].nomeUtente===ut && this.peopleList[i].password===psw)
         return true;

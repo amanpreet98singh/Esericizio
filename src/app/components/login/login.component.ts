@@ -9,21 +9,21 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   
-  constructor(private UtList: LoginService, private router: Router) { }
+  constructor(private utList: LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
   control(ut:string, psw:string){
-    if(this.UtList.login(ut,psw)){
-    sessionStorage.setItem('login', ut);
-    console.log("ok");
-    window.alert("login effettuato")
-    this.router.navigateByUrl('/Home');
-    
+    if(this.utList.control(ut,psw)){
+      sessionStorage.setItem('login', ut);
+      console.log("ok");
+      alert("login effettuato");
+      this.router.navigateByUrl('/Home');
   }
     else{
-    window.alert("login errato");
-    this.router.navigateByUrl('/Login');
+      sessionStorage.removeItem('login');
+      alert("login errato");
+      this.router.navigateByUrl('/Login');
     }
   }
 

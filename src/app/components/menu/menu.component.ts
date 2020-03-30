@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MenuItem } from 'src/app/models/menu-item';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -11,23 +12,38 @@ export class MenuComponent implements OnInit {
   @Output()
   selectedMenuItem: EventEmitter<number>= new EventEmitter();
 
+  //loginDesc:string='Login';
+
+  changeName(){
+    if(sessionStorage.getItem('login')===null)
+      this.menuList[3].desc='Login';
+    else
+      this.menuList[3].desc='Logout';
+  }
+
   menuList:MenuItem[]=[     
     { id:1, desc:"Home", sele: true},
     { id:2, desc:"GameList", sele: false},
     { id:3, desc:"GameEdit", sele: false},
-    { id:4, desc:"Login", sele:false},  
+    { id:4, desc:"Login", sele:false},
    ]
 
-
-  constructor() { }
+  constructor(private router: Router) { this.changeName();}
 
   ngOnInit(): void {
   }
 
   change(id:number){
+    this.changeName();
     for(let MenuItem of this.menuList)
       MenuItem.sele=id === MenuItem.id;
     this.selectedMenuItem.emit(id);
+    if(id===4){
+      sessionStorage.removeItem('login');
+      this.changeName();
+      this.router.navigateByUrl('/Login');
+    }
+
   }
 
 }
