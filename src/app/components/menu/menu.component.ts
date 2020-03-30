@@ -12,7 +12,8 @@ export class MenuComponent implements OnInit {
   @Output()
   selectedMenuItem: EventEmitter<number>= new EventEmitter();
 
-  //loginDesc:string='Login';
+  utente:string=null;
+
 
   changeName(){
     if(sessionStorage.getItem('login')===null){
@@ -21,6 +22,8 @@ export class MenuComponent implements OnInit {
     else
       this.menuList[3].desc='Logout';
 
+    if(sessionStorage.getItem('utente')!=null)
+      this.utente=sessionStorage.getItem('utente');
   }
 
   menuList:MenuItem[]=[     
@@ -36,16 +39,17 @@ export class MenuComponent implements OnInit {
   }
 
   change(id:number){
-    this.changeName();
     for(let MenuItem of this.menuList)
       MenuItem.sele=id === MenuItem.id;
     this.selectedMenuItem.emit(id);
     if(id===4){
       sessionStorage.removeItem('login');
+      sessionStorage.removeItem('utente');
       this.changeName();
       this.router.navigateByUrl('/Login');
+      window.location.reload();
     }
-
+    this.changeName();
   }
 
 }

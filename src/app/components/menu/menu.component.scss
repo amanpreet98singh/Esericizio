@@ -15,7 +15,6 @@ li {
     padding: 2px;
     float: left;
     color: black;
-    display: block;
     font-weight: bold;
     line-height: 30px;
     text-decoration: none;
@@ -26,4 +25,13 @@ li {
 
 li:hover {
     background-color: rgb(231, 252, 136);
+}
+
+.nome {
+    float: right;
+    background-color: white;
+}
+
+.nome:hover {
+    background-color: white;
 }

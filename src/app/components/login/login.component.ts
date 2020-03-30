@@ -16,26 +16,18 @@ export class LoginComponent implements OnInit {
 
   control(ut:string, psw:string){
     const control = this.utList.control(ut,psw);
-    console.log(control);
-    if(control==='admin'){
-        sessionStorage.setItem('login', 'admin');
-        alert("login effettuato admin");
+    if(control!='nope'){
+        sessionStorage.setItem('login', control);
+        sessionStorage.setItem('utente',ut);
+        alert("login effettuato "+control);
+        window.location.reload();
         this.router.navigateByUrl('/Home');
-    }
-    else if(control==='normal'){
-      sessionStorage.setItem('login', 'normal');
-      alert("login effettuato normal");
-      this.router.navigateByUrl('/Home');
     }
   else{
       sessionStorage.removeItem('login');
       alert("login errato");
       this.router.navigateByUrl('/Login');
     }
-  }
-
-  logout(){
-    sessionStorage.removeItem('login');
   }
 
 }
