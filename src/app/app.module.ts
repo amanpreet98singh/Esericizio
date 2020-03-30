@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
   { path: 'GameList', component: GameListComponent},
   { path: 'GameDetail/:id', component: GameDetailComponent},
   { path: 'GameEdit', component: EditGameComponent },
+  { path: 'Login', component: LoginComponent},
   { path: '', redirectTo: '/home', pathMatch:'full' }];
 
 @NgModule({
@@ -24,6 +26,8 @@ const appRoutes: Routes = [
     GameListComponent,
     GameDetailComponent,
     EditGameComponent,
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes)
