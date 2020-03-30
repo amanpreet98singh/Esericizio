@@ -15,8 +15,7 @@ export class MenuComponent implements OnInit {
     { id:1, desc:"Home", sele: true},
     { id:2, desc:"GameList", sele: false},
     { id:3, desc:"GameEdit", sele: false},
-    { id:4, desc:"Login", sele:false} 
-  
+    { id:4, desc:"Login", sele:false},  
    ]
 
 
