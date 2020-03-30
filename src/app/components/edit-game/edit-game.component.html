@@ -1,1 +1,8 @@
-<p>edit-game works!</p>
+<div>
+    <p>nome: {{game?.name}} <input type="text" #nome></p>
+    <p>descrizione: {{game?.desc}} <input type="text" #desc></p>
+    <p>genere: {{game?.genere}} <input type="text" #genere></p>
+    <p>prezzo: {{game?.prezzo}} <input type="number" #prezzo></p>
+    <p>rating: {{game?.rating}} <input type="number" min=1 max=5 #rating></p>
+    <button (click)="edit(nome.value,desc.value,genere.value,prezzo.value,rating.value)">Modifica</button>
+</div>

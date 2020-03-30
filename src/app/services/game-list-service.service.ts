@@ -19,6 +19,10 @@ export class GameListServiceService {
     return this.gameListStored;
   }
 
+  setGameList(gameList:GameItem[]):void{
+    this.gameListStored=gameList;
+  }
+
   getGameItem(id:number):GameItem{
     return this.gameListStored.find(item => {
       return item.id===id;
