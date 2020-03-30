@@ -4,4 +4,5 @@ export interface Persona {
     password: String;
     eta:number;
     indirizzo:String;
+    admin:boolean;
 }

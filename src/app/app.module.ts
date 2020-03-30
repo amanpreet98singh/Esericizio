@@ -16,6 +16,7 @@ const appRoutes: Routes = [
   { path: 'Home', component: HomeComponent, canActivate: [AuthGuardService], },
   { path: 'GameList', component: GameListComponent , canActivate: [AuthGuardService],},
   { path: 'GameDetail/:id', component: GameDetailComponent , canActivate: [AuthGuardService],},
+  { path: 'GameEdit', component: EditGameComponent, canActivate: [AuthGuardService], },
   { path: 'GameEdit/:id', component: EditGameComponent, canActivate: [AuthGuardService], },
   { path: '', redirectTo: '/Home', pathMatch:'full' }];
 

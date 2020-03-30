@@ -15,17 +15,19 @@ export class MenuComponent implements OnInit {
   //loginDesc:string='Login';
 
   changeName(){
-    if(sessionStorage.getItem('login')===null)
-      this.menuList[2].desc='Login';
+    if(sessionStorage.getItem('login')===null){
+      this.menuList[3].desc='Login';
+    }
     else
-      this.menuList[2].desc='Logout';
+      this.menuList[3].desc='Logout';
+
   }
 
   menuList:MenuItem[]=[     
     { id:1, desc:"Home", sele: true},
     { id:2, desc:"GameList", sele: false},
-    //{ id:3, desc:"GameEdit", sele: false},
-    { id:3, desc:"Login", sele:false},
+    { id:3, desc:"GameEdit", sele: false},
+    { id:4, desc:"Login", sele:false},
    ]
 
   constructor(private router: Router) { this.changeName();}
@@ -38,7 +40,7 @@ export class MenuComponent implements OnInit {
     for(let MenuItem of this.menuList)
       MenuItem.sele=id === MenuItem.id;
     this.selectedMenuItem.emit(id);
-    if(id===3){
+    if(id===4){
       sessionStorage.removeItem('login');
       this.changeName();
       this.router.navigateByUrl('/Login');

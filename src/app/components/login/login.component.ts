@@ -13,14 +13,21 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   control(ut:string, psw:string){
-    if(this.utList.control(ut,psw)){
-      sessionStorage.setItem('login', ut);
-      console.log("ok");
-      alert("login effettuato");
+    const control = this.utList.control(ut,psw);
+    console.log(control);
+    if(control==='admin'){
+        sessionStorage.setItem('login', 'admin');
+        alert("login effettuato admin");
+        this.router.navigateByUrl('/Home');
+    }
+    else if(control==='normal'){
+      sessionStorage.setItem('login', 'normal');
+      alert("login effettuato normal");
       this.router.navigateByUrl('/Home');
-  }
-    else{
+    }
+  else{
       sessionStorage.removeItem('login');
       alert("login errato");
       this.router.navigateByUrl('/Login');
