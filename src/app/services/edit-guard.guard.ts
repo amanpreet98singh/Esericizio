@@ -12,7 +12,9 @@ export class EditGuardGuard implements CanActivate {
       return true;​
     }
     else{
-      this.router.navigateByUrl('/Home');
+      this.router.events.subscribe(value =>{
+      this.router.navigateByUrl('/Home');}
+      )
       return false;
     }
   }

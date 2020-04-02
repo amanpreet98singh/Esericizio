@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { Persona } from '../models/persona';
+import { EventEmitter } from 'protractor';
 
 @Injectable({
   providedIn: 'root'

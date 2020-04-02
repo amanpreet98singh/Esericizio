@@ -11,6 +11,12 @@ export class MenuComponent implements OnInit {
   testo :string;
   utente:string=null;
 
+  changeMenu(){
+    this.removeEditItem();
+    this.changeName();
+    this.showNomeUt();
+  }
+
   removeEditItem(){
     if (sessionStorage.getItem('login')==="admin"){
       this.menuList[2]={ id:3, desc:"GameEdit", sele: false};
@@ -60,16 +66,14 @@ export class MenuComponent implements OnInit {
   }
 
   change(id:number){
+    this.changeMenu();
     if(id===4){
       sessionStorage.removeItem('login');
       sessionStorage.removeItem('utente');
       this.router.navigateByUrl('/Login');
     }
     this.router.events.subscribe(value => {
-      this.removeEditItem();
-      this.changeName();
-      this.showNomeUt();
-      });
+      this.changeMenu();
+    });
   }
-
 }
