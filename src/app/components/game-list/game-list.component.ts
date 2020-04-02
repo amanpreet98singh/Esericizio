@@ -25,4 +25,10 @@ export class GameListComponent implements OnInit {
     this.showDetail.emit(id);
   }
 
+  showEdit(){
+    if(sessionStorage.getItem('login')==="admin")
+      return true;
+    return false;
+  }
+
 }

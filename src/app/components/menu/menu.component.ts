@@ -38,9 +38,12 @@ export class MenuComponent implements OnInit {
   showNomeUt(){
     if(sessionStorage.getItem('utente')!=null){
       this.utente=sessionStorage.getItem('utente');
+      return true;
     }
-    else
+    else{
       this.utente=null;
+      return false;
+    }
   }
 
   menuList:MenuItem[]=[     
@@ -51,7 +54,6 @@ export class MenuComponent implements OnInit {
    ]
 
   constructor(private router: Router) {
-   
   }
 
   ngOnInit(): void {

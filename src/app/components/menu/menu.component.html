@@ -3,4 +3,4 @@
         <ul [routerLink]="menuItem.desc" (click)="change(menuItem.id)">{{menuItem.desc}}</ul>
     </ng-container>
 </li>
-<li class=nome *ngIf="utente!=null">{{utente}}</li>
+<li class=nome *ngIf="showNomeUt()">{{utente}}</li>

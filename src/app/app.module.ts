@@ -10,14 +10,16 @@ import { GameDetailComponent } from './components/game-detail/game-detail.compon
 import { EditGameComponent } from './components/edit-game/edit-game.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { LoginGuardGuard } from './services/login-guard.guard';
+import { EditGuardGuard } from './services/edit-guard.guard';
 
 const appRoutes: Routes = [
-  { path: 'Login', component: LoginComponent},
-  { path: 'Home', component: HomeComponent, canActivate: [AuthGuardService], },
-  { path: 'GameList', component: GameListComponent , canActivate: [AuthGuardService],},
+  { path: 'Login', component: LoginComponent, canActivate: [LoginGuardGuard] },
+  { path: 'Home', component: HomeComponent, canActivate: [AuthGuardService,], },
+  { path: 'GameList', component: GameListComponent , canActivate: [AuthGuardService,],},
   { path: 'GameDetail/:id', component: GameDetailComponent , canActivate: [AuthGuardService],},
-  { path: 'GameEdit', component: EditGameComponent, canActivate: [AuthGuardService], },
-  { path: 'GameEdit/:id', component: EditGameComponent, canActivate: [AuthGuardService], },
+  { path: 'GameEdit', component: EditGameComponent, canActivate: [AuthGuardService, EditGuardGuard], },
+  { path: 'GameEdit/:id', component: EditGameComponent, canActivate: [AuthGuardService, EditGuardGuard], },
   { path: '', redirectTo: '/Home', pathMatch:'full' }];
 
 
