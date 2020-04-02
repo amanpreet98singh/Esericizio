@@ -8,9 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-
-  @Output()
-  selectedMenuItem: EventEmitter<number>= new EventEmitter();
+  testo :string;
 
   utente:string=null;
 
@@ -21,9 +19,14 @@ export class MenuComponent implements OnInit {
     }
     else
       this.menuList[3].desc='Logout';
+  }
 
-    if(sessionStorage.getItem('utente')!=null)
+  showNomeUt(){
+    if(sessionStorage.getItem('utente')!=null){
       this.utente=sessionStorage.getItem('utente');
+    }
+    else
+      this.utente=null;
   }
 
   menuList:MenuItem[]=[     
@@ -33,23 +36,23 @@ export class MenuComponent implements OnInit {
     { id:4, desc:"Login", sele:false},
    ]
 
-  constructor(private router: Router) { this.changeName();}
+  constructor(private router: Router) {
+   
+  }
 
   ngOnInit(): void {
   }
 
   change(id:number){
-    for(let MenuItem of this.menuList)
-      MenuItem.sele=id === MenuItem.id;
-    this.selectedMenuItem.emit(id);
     if(id===4){
       sessionStorage.removeItem('login');
       sessionStorage.removeItem('utente');
-      this.changeName();
       this.router.navigateByUrl('/Login');
-      window.location.reload();
     }
-    this.changeName();
+    this.router.events.subscribe(value => {
+      this.changeName();
+      this.showNomeUt();
+      });
   }
 
 }

@@ -23,7 +23,6 @@ export class GameListComponent implements OnInit {
 
   dettaglio(id: number){
     this.showDetail.emit(id);
-    
   }
 
 }

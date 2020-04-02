@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  
-  constructor(private utList: LoginService, private router: Router) { }
+
+  constructor(private utList: LoginService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -20,11 +21,11 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('login', control);
         sessionStorage.setItem('utente',ut);
         alert("login effettuato "+control);
-        window.location.reload();
         this.router.navigateByUrl('/Home');
     }
   else{
       sessionStorage.removeItem('login');
+      sessionStorage.removeItem('utente');
       alert("login errato");
       this.router.navigateByUrl('/Login');
     }
