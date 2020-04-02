@@ -9,16 +9,30 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   testo :string;
-
   utente:string=null;
 
+  removeEditItem(){
+    if (sessionStorage.getItem('login')==="admin"){
+      this.menuList[2]={ id:3, desc:"GameEdit", sele: false};
+      this.menuList[3]={ id:4, desc:"Login", sele:false};
+    }
+    else{
+      this.menuList[2]={ id:4, desc:"Login", sele:false};
+      this.menuList.splice(3);
+    }
+
+  }
 
   changeName(){
     if(sessionStorage.getItem('login')===null){
       this.menuList[3].desc='Login';
     }
-    else
+    else if(sessionStorage.getItem('login')==="admin"){
       this.menuList[3].desc='Logout';
+    }
+    else if(sessionStorage.getItem('login')==="normal"){
+      this.menuList[2].desc='Logout';
+    }
   }
 
   showNomeUt(){
@@ -50,6 +64,7 @@ export class MenuComponent implements OnInit {
       this.router.navigateByUrl('/Login');
     }
     this.router.events.subscribe(value => {
+      this.removeEditItem();
       this.changeName();
       this.showNomeUt();
       });
