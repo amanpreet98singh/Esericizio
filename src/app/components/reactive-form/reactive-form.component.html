@@ -3,28 +3,29 @@
 <head></head>
 
 <body>
-
-    <h1>Login</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="control();cls()">
-        <div>
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" formControlName="nome">
-            <p *ngIf="nomeControl.status === 'INVALID' && nomeControl.dirty">Campo nome obbligatorio</p><br>
-            <label for="password">Password</label>
-            <input type="password" id="password" formControlName="password">
-            <p *ngIf="passwordControl.status === 'INVALID' && passwordControl.dirty">Campo password obbligatorio</p>
-        </div>
-        <button type="submit" [disabled]="loginForm.status === 'INVALID'">Invio</button><br>
-    </form>
-    <!-- <button (click)="cls()">Reset</button> -->
-    <button (click)="stampa()">Stampa lista</button>
-    <ng-container *ngIf="showList===true">
-        <li *ngFor="let person of persone">
-            mail: {{person.email}}, password: {{person.password}}, cognome: {{person.cognome}}
-        </li>
-    </ng-container>
-    <br><br>
-    <h3 (click)="goToRegistrati()">Registrati</h3>
+    <div class="conte">
+        <h1>Login</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="control();cls()">
+            <div>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" formControlName="nome">
+                <p *ngIf="nomeControl.status === 'INVALID' && nomeControl.dirty">Campo nome obbligatorio</p><br>
+                <label for="password">Password</label>
+                <input type="password" id="password" formControlName="password">
+                <p *ngIf="passwordControl.status === 'INVALID' && passwordControl.dirty">Campo password obbligatorio</p>
+            </div>
+            <button type="submit" [disabled]="loginForm.status === 'INVALID'">Invio</button><br>
+        </form>
+        <!-- <button (click)="cls()">Reset</button> -->
+        <button (click)="stampa()">Stampa lista</button>
+        <ng-container *ngIf="showList===true">
+            <li *ngFor="let person of persone">
+                mail: {{person.email}}, password: {{person.password}}, cognome: {{person.cognome}}
+            </li>
+        </ng-container>
+        <br><br>
+        <h3 (click)="goToRegistrati()">Registrati</h3>
+    </div>
 </body>
 
 </html>

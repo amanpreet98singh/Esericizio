@@ -10,7 +10,7 @@ ul {
 }
 
 li {
-    display: block;
+    display: flex;
     margin: 2px;
     padding: 2px;
     float: left;
@@ -23,15 +23,7 @@ li {
     text-align: center;
 }
 
-li:hover {
-    background-color: rgb(231, 252, 136);
-}
-
 .nome {
     float: right;
-    background-color: white;
-}
-
-.nome:hover {
-    background-color: white;
+    font-size: large;
 }

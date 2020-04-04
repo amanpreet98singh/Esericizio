@@ -1,6 +1,10 @@
 <li *ngFor="let menuItem of menuList">
     <ng-container *ngIf="menuItem">
-        <ul [routerLink]="menuItem.desc" (click)="change(menuItem.id)">{{menuItem.desc}}</ul>
+        <button type="button" class="btn btn-primary">
+             <ul [routerLink]="menuItem.desc" (click)="change(menuItem.id)">{{menuItem.desc}}</ul>
+        </button>
     </ng-container>
 </li>
-<li class=nome *ngIf="showNomeUt()">{{utente}}</li>
+<tr class="table-danger" class=nome>
+    <th scope="row" *ngIf="showNomeUt()">{{utente}}</th>
+</tr>

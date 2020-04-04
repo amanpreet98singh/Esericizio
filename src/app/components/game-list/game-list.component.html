@@ -2,38 +2,51 @@
 <ng-container *ngIf="select===false">
     <li *ngFor="let gameItem of gameList">
         <!--diventa rosso solo se si è admin-->
-        <span [appGame]="fontStyle"> nome: {{gameItem.name}} 
-        <button [routerLink]="['/GameDetail', gameItem.id]">></button>
-        <button [routerLink]="['/GameEdit', gameItem.id]" *ngIf="showEdit()">edit</button>
-        </span>
+        <table class="table table-hover">
+            <tr>
+                <th scope="col">
+                    <span> 
+                        nome: {{gameItem.name}}
+                    </span>
+                </th>
+                <td>
+                    <button type="button" class="btn btn-primary" [routerLink]="['/GameDetail', gameItem.id]">detail</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary" [routerLink]="['/GameEdit', gameItem.id]" *ngIf="showEdit()">edit</button>
+                </td>
+            </tr>
+        </table>
     </li>
 </ng-container><br><br>
-<form>
-    <select #genere>
-    <option  value=0>Tutti</option>
-    <option *ngFor="let genere of generi" value={{genere.id}}>{{genere.genere}}</option>
-</select>
+<div class="form-group">
+    <label for="exampleSelect1">Select genere</label>
+    <select class="form-control" id="exampleSelect1" #genere>
+        <option  value=0>Tutti</option>
+        <option *ngFor="let genere of generi" value={{genere.id}}>{{genere.genere}}</option>
+    </select>
     <button (click)="ricerca(genere.value)">Cerca</button> {{genere.value}}: {{genereId}}<br>
-</form><br>
-<ng-container *ngIf="select===true">
-    <h2> Ricerca filtrata da ts</h2>
-    <li *ngFor="let gameItem of gameFilter">
-        <span [appGenere]='genereId'>
-        nome: {{gameItem.name}}, genere: {{gameItem.genere}}
-        <button [routerLink]="['/GameDetail', gameItem.id]">></button>
+    <br>
+    <ng-container *ngIf="select===true">
+        <h2> Ricerca filtrata da ts</h2>
+        <li *ngFor="let gameItem of gameFilter">
+            <span>
+        nome: {{gameItem.name}}, genere: {{gameItem.genere}}<br>
+        <button type="button" class="btn btn-primary" [routerLink]="['/GameDetail', gameItem.id]">detail</button>
         </span>
-    </li>
-    <br><br><br>
-    <h2> Ricerca filtrata da ng-Container</h2>
-    <ng-container *ngFor="let gameItem of gameList">
-        <ng-container *ngIf="gameItem.genere==genere.value || genere.value==0">
-            <li>
-                <span [appGenere]='genereId'>
-                    nome: {{gameItem.name}}, genere: {{gameItem.genere}}
-                    <button [routerLink]="['/GameDetail', gameItem.id]">></button>
+        </li>
+        <br><br><br>
+        <h2> Ricerca filtrata da ng-Container</h2>
+        <ng-container *ngFor="let gameItem of gameList">
+            <ng-container *ngIf="gameItem.genere==genere.value || genere.value==0">
+                <li>
+                    <span [appGenere]='genereId'>
+                    nome: {{gameItem.name}}, genere: {{gameItem.genere}}<br>
+                    <button type="button" class="btn btn-primary" [routerLink]="['/GameDetail', gameItem.id]">detail</button>
                 </span>
-            </li>
+                </li>
+            </ng-container>
         </ng-container>
+        <button (click)="reset()">reset</button>
     </ng-container>
-    <button (click)="reset()">reset</button>
-</ng-container>
+</div>
