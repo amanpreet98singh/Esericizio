@@ -1,7 +1,2 @@
-<app-menu (selectMenuItem)="componentToShow = $event"></app-menu>
-<div [ngSwitch]="componentToShow">
-    <app-home *ngSwitchCase=1></app-home>
-    <app-games-list *ngSwitchCase=2 (showDetail)="showDetailPage($event)"></app-games-list>
-    <app-edit-game *ngSwitchCase=3></app-edit-game>
-    <app-game-detail *ngSwitchCase=4 [gameid]="gameIdForDetail"></app-game-detail>
-</div>
+<app-menu (selectedMenuItem)="componentToShow=$event"></app-menu><br><br><br>
+<router-outlet></router-outlet>

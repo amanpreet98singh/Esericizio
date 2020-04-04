@@ -1,7 +1,6 @@
-<p>menu works!</p>
-<ul>
-    <li *ngFor="let menuItem of menuList" [class.active]="menuItem.sele">
-
-        <button (click)="selectedComponenet(menuItem.id)">{{menuItem.desc}}</button>ciao
-    </li>
-</ul>
+<li *ngFor="let menuItem of menuList">
+    <ng-container *ngIf="menuItem">
+        <ul [routerLink]="menuItem.desc" (click)="change(menuItem.id)">{{menuItem.desc}}</ul>
+    </ng-container>
+</li>
+<li class=nome *ngIf="showNomeUt()">{{utente}}</li>

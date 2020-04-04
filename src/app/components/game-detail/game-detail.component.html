@@ -1,4 +1,7 @@
-<p>Nome: {{game.name}}</p>
-<p>Genere: {{game.genere}}</p>
-<p>Prezzo: {{game.prezzo}}</p>
-<p>Rating: {{game.rating}}</p>
+<div>
+    <p>nome: {{game?.name}}</p>
+    <p>descrizione: {{game?.desc}}</p>
+    <p>prezzo: {{game?.prezzo |currency}}</p>
+    <p>rating: {{game?.rating}}</p>
+    <p>genere: {{genereGioco}}</p>
+</div>

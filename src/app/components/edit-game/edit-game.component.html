@@ -1,1 +1,19 @@
-<p>edit-game works!</p>
+<div *ngIf="showEditGame()">
+    <h1>{{id}}</h1>
+    <p>nome: {{game?.name}} <input type="text" #nome></p>
+    <p>descrizione: {{game?.desc}} <input type="text" #desc></p>
+    <p>genere: {{generi[game?.genere-1].genere}}
+        <select #genere>
+            <option value="0"></option>
+            <option *ngFor="let item of generi" value="{{item.id}}">{{item.genere}}</option>
+        </select>
+    </p>
+    <p>prezzo: {{game?.prezzo}} <input type="number" #prezzo></p>
+    <p>rating: {{game?.rating}} <input type="number" min=1 max=5 #rating></p>
+    <button (click)="edit(nome.value,desc.value,genere.value,prezzo.value,rating.value)">Modifica</button>
+</div>
+<div *ngIf="showEditGame()===false">
+    Non hai selezionato nulla
+    <input type="number" min=0 max="gameList.length" #id>
+    <button (click)="goToId(id.value)"></button>
+</div>

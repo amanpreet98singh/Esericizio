@@ -1,0 +1,49 @@
+<html>
+
+<head></head>
+
+<body>
+
+    <h1>Registrazione</h1>
+    <form [formGroup]="registrationForm" (ngSubmit)="registration()">
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email">
+            <p *ngIf="emailControl.status === 'INVALID' && emailControl.dirty">Campo mail obbligatorio</p><br>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password">
+            <p *ngIf="passwordControl.status === 'INVALID' && passwordControl.dirty">Campo password obbligatorio</p><br>
+
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" formControlName="nome">
+            <p *ngIf="nomeControl.status === 'INVALID' && nomeControl.dirty">Campo nome obbligatorio</p><br>
+
+            <label for="cognome">Cognome</label>
+            <input type="text" id="cognome" formControlName="cognome">
+            <p *ngIf="cognomeControl.status === 'INVALID' && cognomeControl.dirty">Campo cognome obbligatorio</p><br>
+
+            <label for="dataDiNascita">DataDiNascita</label>
+            <input type="date" id="dataDiNascita" formControlName="dataDiNascita">
+            <p *ngIf="dataDiNascitaControl.status === 'INVALID' && dataDiNascitaControl.dirty">DataDiNascita obbligatoria</p><br>
+
+            <label for="luogoDiNascita">LuogoDiNascita</label>
+            <input type="text" id="luogoDiNascita" formControlName="luogoDiNascita">
+            <p *ngIf="luogoDiNascitaControl.status === 'INVALID' && luogoDiNascitaControl.dirty">LuogoDiNascita obbligatoria</p><br>
+
+            <label for="sesso">Sesso</label>
+            <input type="radio" id="sesso" formControlName="sesso" value="maschio">Maschio
+            <input type="radio" id="sesso" formControlName="sesso" value="femmina">Femmina
+            <p *ngIf="sessoControl.status === 'INVALID' && sessoControl.dirty">Campo sesso obbligatorio</p><br>
+
+            <label for="newsletter">Newsletter</label>
+            <input type="checkbox" id="newsletter" formControlName="newsletter">
+            <p *ngIf="newsletterControl.status === 'INVALID' && newsletterControl.dirty">Campo nome obbligatorio</p><br>
+
+        </div>
+        <button type="submit" [disabled]="registrationForm.status === 'INVALID'">Invio</button><br>
+        <button (click)="cls()">Reset</button>
+    </form>
+</body>
+
+</html>

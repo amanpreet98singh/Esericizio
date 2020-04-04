@@ -1,0 +1,47 @@
+<div>
+    <h1>I tuoi dati</h1>
+    <h2>Indice: {{indice}}</h2>
+    <!--{{persona}}-->
+    <p>Email: input text, sola lettura : {{persona.email}} <br> Password: input text, sola lettura:{{persona.password}} <br> Name: input text: {{persona.nome}} <br> Cognome: input text: {{persona.cognome}} <br> Data di Nascita: input date: {{persona.dataNascita
+        |date: 'dd/MM/yyyy'}} <br> Luogo di nascita: input text: {{persona.luogoNascita}} <br> Sesso: radio button: {{persona.sesso}} <br> Iscritto alla NewsLetter: checkbox: {{persona.newsletter}} <br></p>
+</div>
+
+
+<h1>Modifica</h1>
+<form [formGroup]="modifyForm" (ngSubmit)="modify()">
+    <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email"><br>
+
+        <label for="password">Password</label>
+        <input type="text" id="password" formControlName="password"><br>
+
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" formControlName="nome"><br>
+
+        <label for="cognome">Cognome</label>
+        <input type="text" id="cognome" formControlName="cognome"><br>
+
+        <label for="dataDiNascita">DataDiNascita</label>
+        <input type="date" id="dataDiNascita" formControlName="dataDiNascita"><br>
+
+        <label for="luogoDiNascita">LuogoDiNascita</label>
+        <input type="text" id="luogoDiNascita" formControlName="luogoDiNascita"><br>
+
+        <label for="sesso">Sesso</label>
+        <input type="radio" id="sesso" formControlName="sesso" value="maschio">Maschio
+        <input type="radio" id="sesso" formControlName="sesso" value="femmina">Femmina<br>
+
+        <label for="newsletter">Newsletter</label>
+        <input type="checkbox" id="newsletter" formControlName="newsletter"><br>
+
+    </div>
+    <button type="submit" [disabled]="modifyForm.status === 'INVALID'">Invio</button><br>
+    <button (click)="cls()">Reset</button>
+</form><br><br>
+<button (click)="stampa()">Stampa lista</button>
+<ng-container *ngIf="showList===true">
+    <li *ngFor="let person of persone">
+        mail: {{person.email}}, password: {{person.password}}, cognome: {{person.cognome}}
+    </li>
+</ng-container>

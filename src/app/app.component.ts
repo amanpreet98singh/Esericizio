@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GameDetailComponent } from './components/game-detail/game-detail.component';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  componentToShow: number = 1;
-  gameIdForDetail:number;
-  showDetailPage(id:number){
-    this.gameIdForDetail=id;
-    this.componentToShow=4;
+  title = 'Esercitazione';
+  componentToShow:number=1;
+  gameDetail:number;
 
+  showDetail(id:number){
+    this.componentToShow=4;
+    this.gameDetail=id;
   }
 }
+

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GameItem } from 'src/app/model/game-item';
-import { GameListService } from 'src/app/services/game-list-service.service';
+import { GameItem } from 'src/app/models/game-item';
+import { GameListServiceService } from 'src/app/services/game-list-service.service';
+import { ActivatedRoute } from '@angular/router';
+import { GeneriService } from 'src/app/services/generi.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -8,14 +10,21 @@ import { GameListService } from 'src/app/services/game-list-service.service';
   styleUrls: ['./game-detail.component.scss']
 })
 export class GameDetailComponent implements OnInit {
-  @Input()
-  gameid:number;
-  game:GameItem;
-  constructor(private gameListService: GameListService) { 
-  }
+  id:number;
 
+  game:GameItem;
+  sub: any;
+  genereList: GeneriService;
+  genereGioco:string;
+
+  constructor(private gameListService: GameListServiceService,private route: ActivatedRoute, private genere: GeneriService){
+  }
   ngOnInit(): void {
-    this.game=this.gameListService.getGameItem(this.gameid);
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id'];
+   });
+    this.game=this.gameListService.getGameItem(this.id);
+    this.genereGioco=this.genere.associaDescrizione(this.game.genere);
   }
 
 }
