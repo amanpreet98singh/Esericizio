@@ -1,10 +1,21 @@
-<form #loginForm="ngForm">
-    <div class="form-group">
-        <label for="nome">Username</label>
-        <input type="text" id="nome" required>
-        <br>
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" required>
-    </div>
-    <button type="submit" [disabled]="!loginForm.form.valid">Submit</button>
-</form>
+<html>
+
+<head>
+</head>
+
+<body>
+    <form #loginForm="ngForm">
+        <h1>Login</h1>
+        <div class="form-group">
+            <label for="nome">Nome: </label>
+            <input type="text" class="form-control" id="name" required [ngModel]="model.name" name="nameInput" #name="ngModel"><br>
+            <div [hidden]="name.valid || name.pristine">Nome è richiesto</div>
+            <label for="password">Password: </label>
+            <input type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="psw" #psw="ngModel">
+            <div [hidden]="psw.valid || psw.pristine">La psw è obbligatoria</div>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid" (click)="control(name.value,psw.value); loginForm.reset()">invio</button>
+    </form>
+</body>
+
+</html>
