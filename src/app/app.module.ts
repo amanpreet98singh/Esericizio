@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -12,9 +13,10 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LoginGuardGuard } from './services/login-guard.guard';
 import { EditGuardGuard } from './services/edit-guard.guard';
+import { TemplateFormComponent } from './components/forms/template-form/template-form.component';
 
 const appRoutes: Routes = [
-  { path: 'Login', component: LoginComponent, canActivate: [LoginGuardGuard] },
+  { path: 'Login', component: TemplateFormComponent, canActivate: [LoginGuardGuard] },
   { path: 'Home', component: HomeComponent, canActivate: [AuthGuardService,], },
   { path: 'GameList', component: GameListComponent , canActivate: [AuthGuardService,],},
   { path: 'GameDetail/:id', component: GameDetailComponent , canActivate: [AuthGuardService],},
@@ -32,9 +34,12 @@ const appRoutes: Routes = [
     GameDetailComponent,
     EditGameComponent,
     LoginComponent,
+    TemplateFormComponent,
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(appRoutes)
+    BrowserModule, 
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
