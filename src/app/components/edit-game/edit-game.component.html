@@ -1,4 +1,5 @@
-<div *ngIf="id!=0">
+<div *ngIf="id===undefined">
+    <h1>{{id}}</h1>
     <p>nome: {{game?.name}} <input type="text" #nome></p>
     <p>descrizione: {{game?.desc}} <input type="text" #desc></p>
     <p>genere: {{game?.genere}} <input type="text" #genere></p>
@@ -6,8 +7,6 @@
     <p>rating: {{game?.rating}} <input type="number" min=1 max=5 #rating></p>
     <button (click)="edit(nome.value,desc.value,genere.value,prezzo.value,rating.value)">Modifica</button>
 </div>
-<div *ngIf="id==0">
-    <select *ngFor="let item of gameList">
-      {{item.id}}
-  </select>
+<div *ngIf="id!==undefined">
+    Non hai selezionato nulla
 </div>

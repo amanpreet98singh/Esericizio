@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   { path: 'GameDetail/:id', component: GameDetailComponent , canActivate: [AuthGuardService],},
   { path: 'GameEdit', component: EditGameComponent, canActivate: [AuthGuardService, EditGuardGuard], },
   { path: 'GameEdit/:id', component: EditGameComponent, canActivate: [AuthGuardService, EditGuardGuard], },
-  { path: '', redirectTo: '/Home', pathMatch:'full' }];
+  { path: '', redirectTo: '/Login', pathMatch:'full' }];
 
 
 @NgModule({

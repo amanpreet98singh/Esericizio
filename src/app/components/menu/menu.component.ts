@@ -30,15 +30,14 @@ export class MenuComponent implements OnInit {
   }
 
   changeName(){
-    if(sessionStorage.getItem('login')===null){
-      this.menuList[3].desc='Login';
-    }
-    else if(sessionStorage.getItem('login')==="admin"){
+    if(sessionStorage.getItem('login')==="admin"){
       this.menuList[3].desc='Logout';
     }
     else if(sessionStorage.getItem('login')==="normal"){
       this.menuList[2].desc='Logout';
     }
+    else if(sessionStorage.getItem('login')===null)
+      this.menuList[2].desc='Login';
   }
 
   showNomeUt(){
@@ -60,6 +59,7 @@ export class MenuComponent implements OnInit {
    ]
 
   constructor(private router: Router) {
+    this.changeMenu();
   }
 
   ngOnInit(): void {
