@@ -2,21 +2,13 @@
 <ng-container *ngIf="select===false">
     <li *ngFor="let gameItem of gameList">
         <!--diventa rosso solo se si è admin-->
-        <table class="table table-hover">
-            <tr>
-                <th scope="col">
-                    <span> 
-                        nome: {{gameItem.name}}
-                    </span>
-                </th>
-                <td>
-                    <button type="button" class="btn btn-primary" [routerLink]="['/GameDetail', gameItem.id]">detail</button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-primary" [routerLink]="['/GameEdit', gameItem.id]" *ngIf="showEdit()">edit</button>
-                </td>
-            </tr>
-        </table>
+        <span> 
+             nome: {{gameItem.name}}
+        </span>
+        <br>
+        <button type="button" class="btn btn-primary" [routerLink]="['/GameDetail', gameItem.id]">detail</button>
+        <br>
+        <button type="button" class="btn btn-primary" [routerLink]="['/GameEdit', gameItem.id]" *ngIf="showEdit()">edit</button>
     </li>
 </ng-container><br><br>
 <div class="form-group">
