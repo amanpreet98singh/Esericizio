@@ -18,6 +18,7 @@ import { GameDirective } from './directive/game.directive';
 import { GenereDirective } from './directive/genere.directive';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { NormalGuard } from './services/normal.guard';
+import { RatingComponent } from './components/rating/rating.component';
 
 const appRoutes: Routes = [
   { path: 'Login', component: ReactiveFormComponent, canActivate: [LoginGuardGuard]},
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     GameDirective,
     GenereDirective,
     EditUserComponent,
+    RatingComponent,
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule,
