@@ -118,7 +118,7 @@ export class EditUserComponent implements OnInit {
   }
 
   stampa(){
-    if(this.showList===false)
+    if(this.showList==false)
       this.showList=true;
     else
       this.showList=false;
