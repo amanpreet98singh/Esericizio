@@ -6,7 +6,7 @@ import { DatiPersonali } from '../models/dati-personali';
 })
 export class UserProfileService {
   utRegistrati: DatiPersonali[]=[
-    {email: 'aman', password: '123',nome: 'amanpreet',cognome: 'aman', dataNascita: new Date ('14/08/1998'), luogoNascita: "", sesso: "maschio", newsletter: true, admin: false,},
+    {email: 'aman', password: '123',nome: 'amanpreet',cognome: 'aman', dataNascita: new Date('2010/04/06'), luogoNascita: "", sesso: "maschio", newsletter: true, admin: false,},
     {email: 'mario', password: '123',nome: 'mario',cognome: 'rossi', dataNascita: new Date('2010/10/10'), luogoNascita: "firenze", sesso: "donna", newsletter: false, admin: true,},
   ];
 

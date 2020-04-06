@@ -69,7 +69,7 @@ export class EditUserComponent implements OnInit {
       password: [this.persona.password,],
       nome: [this.persona.nome,],
       cognome: [this.persona.cognome, ],
-      dataDiNascita: [this.persona.dataNascita,],
+      dataDiNascita: [new Date(this.persona.dataNascita).toISOString().substring(0, 10)],
       luogoDiNascita: [this.persona.luogoNascita, ],
       sesso:[this.persona.sesso,],
       newsletter: [this.persona.newsletter,],
